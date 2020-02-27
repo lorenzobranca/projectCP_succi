@@ -1,0 +1,332 @@
+% !TeX spellcheck = it_IT
+%Fronte-retro, Nuovo capitolo a destra
+\documentclass [11pt]{article}
+%\usepackage{geometry}
+%Lingua
+%\usepackage[italian]{babel}
+%\selectlanguage{italian}
+
+%Per i caratteri
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+%Per la lista dei simboli
+\usepackage{nomencl}
+\makenomenclature
+
+\renewcommand{\nomname}{List of Symbols}
+
+
+%Per citare con \hiperref, inserire url e altro
+\usepackage{hyperref}
+
+%Pacchetti per i simboli
+\usepackage{amssymb}
+
+%Pacchetto per le formule matematiche
+\usepackage{amsmath}
+
+
+
+%Per i grafici
+\usepackage{graphicx}
+
+
+%Per i caratteri con mathcal, disattivato
+%\usepackage{eucal}
+
+%Per i teoremi
+\usepackage{amsthm}
+
+
+\usepackage{chngpage}
+
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{mygray}{RGB}{235,235,235}
+
+
+
+\usepackage{bigfoot} % to allow verbatim in footnote
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{filecontents}
+
+
+
+\usepackage{eso-pic}
+\usepackage{array,multirow,graphicx}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{amsopn}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{setspace}
+\usepackage{caption}
+\captionsetup{margin=10pt, font=footnotesize, labelfont=bf}
+\usepackage[nottoc]{tocbibind}
+\usepackage{mathtools}
+
+
+
+
+%Comodità
+\newcommand{\ppi}{\mathbf{\pi}}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\bu}{\mathbf{1}}
+\newcommand{\unosu}[1]{\frac{1}{#1}}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\tA}{\widetilde{A}}
+\newcommand{\tB}{\widetilde{B}}
+\newcommand{\tC}{\widetilde{C}}
+\newcommand{\tE}{\widetilde{E}}
+\newcommand{\tP}{\widetilde{P}}
+\newcommand{\tG}{\widetilde{G}}
+\newcommand{\ta}{\tilde{a}}
+\newcommand{\tv}{\tilde{v}}
+
+
+%Parentesi
+\newcommand{\virgolette}[1]{``#1''}
+\newcommand{\br}[1]{\<#1\>}
+\newcommand{\tonde}[1]{\left( #1 \right)}
+\newcommand{\quadre}[1]{\left[ #1 \right]}
+\newcommand{\graffe}[1]{\left\{ #1 \right\}}
+\newcommand{\assoluto}[1]{\left| #1 \right|}
+\newcommand{\norma}[1]{\left\| #1 \right\|}
+
+%Norme
+\newcommand{\normaW}[1]{\norma{#1}_{\W}}
+\newcommand{\normaWu}[1]{\norma{#1}_{\W_1}}
+\newcommand{\normaF}[1]{\norma{#1}_{\F}}
+\newcommand{\normaQT}[1]{\norma{#1}_{\QT}}
+\newcommand{\normaGQT}[1]{\norma{#1}_{\GQT}}
+\newcommand{\normalp}[1]{\norma{#1}_{\ell^p}}
+\newcommand{\normalinf}[1]{\norma{#1}_{\ell^\infty}}
+\newcommand{\normalu}[1]{\norma{#1}_{\ell^1}}
+\newcommand{\normald}[1]{\norma{#1}_{\ell^2}}
+\newcommand{\normap}[1]{\norma{#1}_{p}}
+\newcommand{\normauno}[1]{\norma{#1}_{1}}
+\newcommand{\normainf}[1]{\norma{#1}_{\infty}}
+
+
+%operatori
+\newcommand{\minimo}[1]{\min \{ #1 \}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\trunc}{trunc}
+\DeclareMathOperator{\trid}{trid}
+
+
+
+%mathbbs
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\D}{\mathbb{D}}
+
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\T}{\mathbb{T}}
+
+%mathbfs
+\renewcommand{\P}{\mathbf{P}}
+\newcommand{\E}{\mathbf{E}}
+
+
+%mathcals
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\QT}{\mathcal{QT}}
+\newcommand{\GQT}{\mathcal{GQT}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\EE}{\mathcal{E}}
+
+
+%bold symbols
+\newcommand{\uni}{\bold 1}
+\newcommand{\boldpi}{\boldsymbol{\pi}}
+\newcommand{\bp}{\boldsymbol{\pi}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\bb}{\mathbf{b}}
+\renewcommand{\i}{\mathbf{i}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+
+
+
+
+\newtheorem{thm}{Theorem}[section]
+
+\theoremstyle{definition}
+\newtheorem{rem}{Remark}
+
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+
+
+
+\newcommand{ \ssss }[1]{\subsubsection*{#1}}
+\newcommand{ \sss }[1]{\subsection*{#1}}
+
+\begin{document}
+\sss{Equazione}
+%
+Discretizzazione con differenze finite per l'equazione
+%
+$$
+	\partial_t \phi(t,x)+V(t,x)\nabla \phi(t,x)=D(t,x)\nabla^2 \phi(t,x) + 						a(x)\phi(t,x)-b\phi(t,x)^2.
+$$	
+%
+Supponiamo $\phi:[0,T]\times [0,L]\to \R$, quindi $x\in[0,L]$ ha dimensione $1$. L'equazione diventa
+%
+$$
+\partial_t \phi(t,x)+V(t,x)\partial_x \phi(t,x)=D(t,x)\partial_{xx} \phi(t,x) + 						a(x)\phi(t,x)-b\phi(t,x)^2.
+$$	
+
+
+
+
+\sss{Griglie}
+
+Discretizziamo $[0,T]$ con passo $\Delta t$ e $[0,L]$	con passo $\Delta x$. Otteniamo due griglie di punti: $t_0,t_1,\dots,t_N$, $x_0,x_1,\dots x_M$. Più precisamente
+%
+\begin{align*}
+	t_n&=n\Delta t,\quad n=0,\dots,N,\\ 
+	x_j&=j\Delta x,\quad j=0,\dots,M.
+\end{align*}
+%	
+Cerchiamo le seguenti approssimazioni:
+%
+\begin{align*}
+\phi^n_j\approx \phi(t_n,x_j),\qquad n=0,\dots,N,\quad  j=0,\dots,M.	
+\end{align*}	
+%
+
+
+
+\sss{Discretizzazione degli operatori differenziali}
+Applichiamo le seguenti discretizzazioni locali.
+\begin{itemize}
+%	
+	\item Differenza in avanti per le derivate del primo ordine:
+%
+	\begin{align*}
+		\partial_t\phi (t_n,x_j)&\approx \frac{\phi(t_{n+1},x_j)-\phi(t_n,x_j) }{\Delta t},\\
+		\partial_x\phi (t_n,x_j)&\approx \frac{\phi(t_n,x_{j+1})-\phi(t_n,x_j) }{\Delta x}.
+	\end{align*}
+%
+	\item Discretizzazione con stencil $[1,-2,1]$ per la derivata seconda:
+%
+	\begin{align*}
+	\partial_{xx}\phi(t_n,x_j)\approx \frac{\phi(t_n,x_{j+1})-2\phi(t_subn,x_j)+\phi(t_n,x_{j-1})}{\Delta x^2}.
+	\end{align*}
+%	
+\end{itemize}
+%
+
+\newpage
+
+\sss{Schema numerico}
+
+
+
+Vogliamo ottenere numericamente un'approssimazione $\phi^n_j\approx \phi(t_n,x_j)$. Bisogna avere in input i valori
+%
+\begin{align*}
+	V_j^n=V(t_n,x_j),\quad D_j^n=D(t_n,x_j),\quad a_j=a(x_j).
+\end{align*}
+%
+Con questo schema otteniamo l'equazione
+%
+$$
+\frac{\phi^{n+1}_j-\phi^n_j }{\Delta t}+V_j^n\frac{\phi^n_{j+1}-\phi^n_j }{\Delta x}=
+D^n_j\frac{\phi^n_{j+1}-2\phi^n_j+\phi^n_{j-1}}{\Delta x^2}+a_j\phi^n_j-b\cdot (\phi^n_j)^2,
+$$
+%
+che scritta in maniera esplicita diventa
+%
+\begin{align*}
+\phi^{n+1}_j=&\quadre{ 1+\Delta t\tonde{ \frac{V_j^n}{\Delta x}-2\frac{D_j^n}{\Delta x^2}+a_j } }\phi^n_j-\Delta t\cdot b\cdot (\phi^n_j)^2\\
+&+\Delta t\tonde{ -\frac{V_j^n}{\Delta x}+\frac{D_j^n}{\Delta x^2} }\phi_{j+1}^n+\Delta t\frac{D_j^n}{\Delta x^2}\phi^n_{j-1}.
+\end{align*}
+
+
+
+\sss{Condizioni al bordo}
+
+
+
+Per utilizzare lo schema descritto, servono certamente le condizioni iniziali $\phi_j^0$ per $j=0,\dots, M$, ossia ci serve la funzione $\phi^{(0)}(x)=\phi(0,x)$ assegnata. Inoltre, le formule che descrivono lo schema non sono valide a priori per calcolare $\phi^{n+1}_0$ e $\phi^{n+1}_{M}$, in quanto necessiterebbero dei valori $\phi^{n+1}_{-1}$ e $\phi^{n+1}_{N+1}$ che non sono definiti.
+
+\ssss{Condizioni periodiche }
+
+Un modo per ovviare questo problema è utilizzare la seguente condizione di periodicità:
+%
+$$
+\phi(t,0)=\phi(t,L)\quad \text{per ogni $t\in[0,T]$}.
+$$
+%
+In questo modo si impone $\phi_0^n=\phi_M^n$ per ogni $n$, e si può quindi usare la convenzione $\phi^n_{-1}=\phi^n_{M-1}$ e $\phi^n_{M+1}=\phi^n_1$.
+
+
+\ssss{Condizioni non periodiche}
+Le condizioni periodiche potrebbero non essere un buon modello per determinate situazioni fisiche, o potrebbero dare problemi dal punto di vista computazionale. Per evitarle, bisogna assegnare le condizioni iniziali
+%
+$$
+\phi(t,0)=\phi^{(1)}(t),\quad \phi(t,L)=\phi^{(2)}(t).
+$$
+In questo modo sono assegnati tutti i valori $\phi^n_0, \phi^n_M$ per $n=0,\dots,N$.
+%
+
+
+
+\sss{Questioni}
+
+
+\begin{itemize}
+	\item Come scegliere le condizioni al contorno.
+	\item Come inizializzare $a(x)$.
+	\item Come scegliere i passi $\Delta t, \Delta x$ (forse bisogna far sì che $\Delta x<<\Delta t$).
+	\item Estendere lo schema al caso 2d.
+\end{itemize}
+
+
+
+
+
+		
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
