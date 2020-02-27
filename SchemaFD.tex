@@ -189,13 +189,13 @@
 Discretizzazione con differenze finite per l'equazione
 %
 $$
-	\partial_t \phi(t,x)+V(t,x)\nabla \phi(t,x)=D(t,x)\nabla^2 \phi(t,x) + 						a(x)\phi(t,x)-b\phi(t,x)^2.
+	\partial_t \phi(t,x)+V\cdot \nabla \phi(t,x)=D\,\nabla^2 \phi(t,x) + 						a(x)\phi(t,x)-b\phi(t,x)^2.
 $$	
 %
 Supponiamo $\phi:[0,T]\times [0,L]\to \R$, quindi $x\in[0,L]$ ha dimensione $1$. L'equazione diventa
 %
 $$
-\partial_t \phi(t,x)+V(t,x)\partial_x \phi(t,x)=D(t,x)\partial_{xx} \phi(t,x) + 						a(x)\phi(t,x)-b\phi(t,x)^2.
+\partial_t \phi(t,x)+V\,\partial_x \phi(t,x)=D\,\partial_{xx} \phi(t,x) + 						a(x)\phi(t,x)-b\phi(t,x)^2.
 $$	
 
 
@@ -233,7 +233,7 @@ Applichiamo le seguenti discretizzazioni locali.
 	\item Discretizzazione con stencil $[1,-2,1]$ per la derivata seconda:
 %
 	\begin{align*}
-	\partial_{xx}\phi(t_n,x_j)\approx \frac{\phi(t_n,x_{j+1})-2\phi(t_subn,x_j)+\phi(t_n,x_{j-1})}{\Delta x^2}.
+	\partial_{xx}\phi(t_n,x_j)\approx \frac{\phi(t_n,x_{j+1})-2\phi(t_n,x_j)+\phi(t_n,x_{j-1})}{\Delta x^2}.
 	\end{align*}
 %	
 \end{itemize}
@@ -246,23 +246,21 @@ Applichiamo le seguenti discretizzazioni locali.
 
 
 Vogliamo ottenere numericamente un'approssimazione $\phi^n_j\approx \phi(t_n,x_j)$. Bisogna avere in input i valori
-%
-\begin{align*}
-	V_j^n=V(t_n,x_j),\quad D_j^n=D(t_n,x_j),\quad a_j=a(x_j).
-\end{align*}
+$a_j=a(x_j)$.
+
 %
 Con questo schema otteniamo l'equazione
 %
 $$
-\frac{\phi^{n+1}_j-\phi^n_j }{\Delta t}+V_j^n\frac{\phi^n_{j+1}-\phi^n_j }{\Delta x}=
-D^n_j\frac{\phi^n_{j+1}-2\phi^n_j+\phi^n_{j-1}}{\Delta x^2}+a_j\phi^n_j-b\cdot (\phi^n_j)^2,
+\frac{\phi^{n+1}_j-\phi^n_j }{\Delta t}+V\frac{\phi^n_{j+1}-\phi^n_j }{\Delta x}=
+D\frac{\phi^n_{j+1}-2\phi^n_j+\phi^n_{j-1}}{\Delta x^2}+a_j\phi^n_j-b\cdot (\phi^n_j)^2,
 $$
 %
 che scritta in maniera esplicita diventa
 %
 \begin{align*}
-\phi^{n+1}_j=&\quadre{ 1+\Delta t\tonde{ \frac{V_j^n}{\Delta x}-2\frac{D_j^n}{\Delta x^2}+a_j } }\phi^n_j-\Delta t\cdot b\cdot (\phi^n_j)^2\\
-&+\Delta t\tonde{ -\frac{V_j^n}{\Delta x}+\frac{D_j^n}{\Delta x^2} }\phi_{j+1}^n+\Delta t\frac{D_j^n}{\Delta x^2}\phi^n_{j-1}.
+\phi^{n+1}_j=&\quadre{ 1+\Delta t\tonde{ \frac{V}{\Delta x}-2\frac{D}{\Delta x^2}+a_j } }\phi^n_j-\Delta t\cdot b\cdot (\phi^n_j)^2\\
+&+\Delta t\tonde{ -\frac{V}{\Delta x}+\frac{D}{\Delta x^2} }\phi_{j+1}^n+\Delta t\frac{D}{\Delta x^2}\phi^n_{j-1}.
 \end{align*}
 
 
